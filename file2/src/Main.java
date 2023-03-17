@@ -15,27 +15,31 @@ public class Main {
         File file2 = new File("C://Gameees//savegames//save2.dat");
         File file1 = new File("C://Gameees//savegames//save1.dat");
 
+        save(file1, save1);
+        save(file2, save2);
+        save(file3, save3);
 
-        try(FileOutputStream fos = new FileOutputStream(file1)) {
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(save1);
-        }catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
 
-        try(FileOutputStream fos = new FileOutputStream(file2)) {
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(save2);
-        }catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
-
-        try(FileOutputStream fos = new FileOutputStream(file3)) {
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(save3);
-        }catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
+//        try(FileOutputStream fos = new FileOutputStream(file1)) {
+//            ObjectOutputStream oos = new ObjectOutputStream(fos);
+//            oos.writeObject(save1);
+//        }catch (Exception ex){
+//            System.out.println(ex.getMessage());
+//        }
+//
+//        try(FileOutputStream fos = new FileOutputStream(file2)) {
+//            ObjectOutputStream oos = new ObjectOutputStream(fos);
+//            oos.writeObject(save2);
+//        }catch (Exception ex){
+//            System.out.println(ex.getMessage());
+//        }
+//
+//        try(FileOutputStream fos = new FileOutputStream(file3)) {
+//            ObjectOutputStream oos = new ObjectOutputStream(fos);
+//            oos.writeObject(save3);
+//        }catch (Exception ex){
+//            System.out.println(ex.getMessage());
+//        }
 
         String[] list = new String[]{"save1.dat","save2.dat","save3.dat"};
         zipFiles("C://Gameees//savegames//zip.zip", list);
@@ -65,5 +69,14 @@ public class Main {
         }
 
 
+    }
+
+    public static void save (File file, GameProgress save){
+        try(FileOutputStream fos = new FileOutputStream(file)) {
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(save);
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 }
